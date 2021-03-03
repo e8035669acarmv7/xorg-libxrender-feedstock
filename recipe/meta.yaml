@@ -34,11 +34,12 @@ requirements:
     - gettext                       # [unix]
     - libtool                       # [unix]
   host:
-    - xorg-libx11 1.6.*
+    - xorg-libx11 >=1.6,<2
+    - xorg-libx11
     - xorg-renderproto
     - xorg-util-macros
   run:
-    - xorg-libx11 1.6.*
+    - {{ pin_compatible('xorg-libx11') }}
     - xorg-renderproto
 
 test:
