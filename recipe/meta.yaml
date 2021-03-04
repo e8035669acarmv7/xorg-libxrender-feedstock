@@ -15,7 +15,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1002
+  number: 1003
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -34,11 +34,13 @@ requirements:
     - gettext                       # [unix]
     - libtool                       # [unix]
   host:
-    - xorg-libx11 1.6.*
+    - xorg-libx11 >=1.6,<2
+    # Additional constraintless xorg-libx11 dep below is for conda-build to add potential pinning to.
+    - xorg-libx11
     - xorg-renderproto
     - xorg-util-macros
   run:
-    - xorg-libx11 1.6.*
+    - {{ pin_compatible('xorg-libx11') }}
     - xorg-renderproto
 
 test:
