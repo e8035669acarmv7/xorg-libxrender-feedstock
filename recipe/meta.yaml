@@ -1,8 +1,8 @@
 {% set xorg_name = "libXrender" %}
 {% set xorg_category = "lib" %}
 {% set name = "xorg-" ~ xorg_name %}
-{% set version = "0.9.10" %}
-{% set sha256 = "c06d5979f86e64cabbde57c223938db0b939dff49fdb5a793a1d3d0396650949" %}
+{% set version = "0.9.11" %}
+{% set sha256 = "bc53759a3a83d1ff702fb59641b3d2f7c56e05051fa0cfa93501166fa782dc24" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
@@ -15,8 +15,10 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1003
+  number: 1004
   detect_binary_files_with_prefix: true
+  run_exports:
+    - {{ pin_subpackage(name|lower) }}
 
 requirements:
   build:
@@ -41,7 +43,6 @@ requirements:
     - xorg-renderproto
     - xorg-util-macros
   run:
-    - {{ pin_compatible('xorg-libx11') }}
     - xorg-renderproto
 
 test:
