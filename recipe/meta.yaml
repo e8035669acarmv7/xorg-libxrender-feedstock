@@ -18,7 +18,7 @@ build:
   number: 0
   detect_binary_files_with_prefix: true
   run_exports:
-    - {{ pin_subpackage(name|lower) }}
+    - {{ pin_subpackage(name|lower, max_pin='x.x') }}
 
 requirements:
   build:
